@@ -1,4 +1,3 @@
-/*
 const url = 'https://free-to-play-games-database.p.rapidapi.com/api/filter?tag=3d.mmorpg.fantasy.pvp&platform=pc';
 const options = {
 	method: 'GET',
@@ -7,9 +6,7 @@ const options = {
 		'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
 	}
 };
-*/
 
-const url = "object.json";
 
 const btn = document.getElementById("btn");
 const cnt = document.getElementById("cnt");
@@ -83,9 +80,9 @@ function saveFetch(data){
 
 btn.addEventListener("click", () => {
     try {
-        fetch(url)
+        fetch(url, options)
           .then((response) => response.json())
-          .then((data) => saveFetch(data.response))
+          .then((data) => saveFetch(data))
     } catch (error) {
         console.log(error);
     }
