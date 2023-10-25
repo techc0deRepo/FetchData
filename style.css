@@ -5,22 +5,94 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     background: rgb(11,11,10);
-    background: linear-gradient(77deg, rgba(11,11,10,1) 0%, rgba(21,21,19,1) 77%); 
+    background: linear-gradient(77deg, #0b0b0a 0%, #151513 77%);
+    height: 100vh;
+}
+
+nav {
+    width: auto;
+    padding-inline: 7.5%;
+    background: #1b263b;
+    background: linear-gradient(120deg, #0d1b2a 0%, #1b263b 77%);
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.search-cnt {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    height: 42px;
+}
+
+.search-btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #7209b7;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background-image: url(/assets/search.svg);
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: 50%;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    transition: .3s transform ease;
+}
+
+.search-btn:hover{
+    transform: scale(1.12);
+}
+
+.search-btn:active {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.search-cnt input{
+    background: #010a0b;
+    background: linear-gradient(180deg, #010a0b 0%, #0d1b2a 100%);
+    color: #f2f2f2;
+    border: none;
+    border-radius: 22px;
+    width: 100%;
+    height: 100%;
+    padding: 0 22px 0 54px;
+    cursor: text;
+    outline: 1px solid #44066d;
+}
+
+.search-cnt input:focus{
+    outline: 1px solid #7209b7;
 }
 
 .container {
-    max-width: 1024px;
-    margin-inline: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: auto;
+    height: 100%;
+    margin-inline: 12.5%;
+    display: block;
+    background: #2e2e2e;
+    padding: 2rem 0;
+    overflow-y: scroll;
+}
+
+.card-cnt {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
     gap: 1em;
+    grid-template-rows: repeat(auto-fill, 200px);
+    justify-content: center
 }
 
 .card {
     display: inline-flex;
-    width: 700px;
+    width: 600px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -49,3 +121,12 @@ body {
     background-color: blueviolet;
 }
 
+footer {
+    width: 100%;
+    padding: 12px 0;
+    display: inline-flex;
+    justify-content: center;
+    color: #f2f2f2;
+    background-color: #151513;
+    border-top: 1px solid #2e2e2e;
+}

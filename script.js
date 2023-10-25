@@ -1,4 +1,4 @@
-const url = 'https://free-to-play-games-database.p.rapidapi.com/api/filter?tag=3d.mmorpg.fantasy.pvp&platform=pc';
+const url = 'https://free-to-play-games-database.p.rapidapi.com/api/filter?tag=3d.mmorpg.fantasy.pvp';
 const options = {
 	method: 'GET',
 	headers: {
@@ -15,25 +15,30 @@ const platform = new Set();
 
 function saveFetch(data){
 
- console.log(data);
- 
- data.forEach(element => {
-     const obj = {
-         id: element.id,
-         general_info: {
+    while (cnt.firstChild) {
+        cnt.firstChild.remove()
+    }
+    console.log(data);
+
+    data.forEach(element => {
+        const obj = {
+            id: element.id,
+            general_info: {
             genre: element.genre,
             platform: element.platform,
             developer: element.developer,
             publisher: element.publisher,
-         },
-         game_desc: {
+            },
+            game_desc: {
             title: element.title,
             thumb: element.thumbnail,
             desc: element.short_description,
             release: element.release_date,
             url: element.game_url
-         }
+            }
         }
+
+    // Add values to Sets    
     genre.add(obj.general_info.genre);
     platform.add(obj.general_info.platform);
 
@@ -52,7 +57,7 @@ function saveFetch(data){
     title.innerHTML = obj.game_desc.title;
     desc.innerHTML = obj.game_desc.desc;
     release.innerHTML = obj.game_desc.release;
-    
+
     // Button customize
     cta.innerText = "Go to website";
     cta.type = "button";
@@ -72,10 +77,10 @@ function saveFetch(data){
     game_desc.append(title, desc, release, cta);
 
     // Reapeat to all the objects!
- });
+    });
 
- console.log(genre);
- console.log(platform);
+    console.log(genre);
+    console.log(platform);
 }
 
 btn.addEventListener("click", () => {
