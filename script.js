@@ -103,15 +103,16 @@ function App() {
             cta.innerText = "Go to website";
             cta.type = "button";
             cta.classList.add("button");
-            cta.addEventListener("click", () => {
-                window.location.href=card.game_desc.url
-            });
 
             // Set CSS class
             card_cnt.setAttribute("class","card");
             image.setAttribute("class","image");
             game_desc.setAttribute("class","game-desc");
 
+            card_cnt.addEventListener("click", () => {
+                game_desc.classList.toggle("show");
+            });
+            
             let cardCreated = {
                 card_cnt: card_cnt,
                 game_desc: game_desc,
