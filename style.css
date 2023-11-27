@@ -22,19 +22,27 @@
     --accent: #8338EC;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: var(--font-family);
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
     line-height: 1.5;
     margin: 0;
 }
 
-p, small, a, li, table {
+p,
+small,
+a,
+li,
+table {
     line-height: 1.8;
     margin: 0;
 }
@@ -110,9 +118,10 @@ nav {
     background: #1b263b;
     background: linear-gradient(180deg, var(--dark) 0%, var(--bg) 77%);
     border-bottom: 1px solid var(--grey);
-    padding: 12px 0;
+    padding: 12px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     z-index: 10;
 }
 
@@ -123,7 +132,7 @@ nav {
     height: 42px;
 }
 
-.search-btn{
+.search-btn {
     position: absolute;
     top: 0;
     left: 0;
@@ -140,7 +149,7 @@ nav {
     transition: .3s transform ease;
 }
 
-.search-btn:hover{
+.search-btn:hover {
     transform: scale(1.12);
 }
 
@@ -148,7 +157,7 @@ nav {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-.search-cnt input{
+.search-cnt input {
     background: #010a0b;
     background: linear-gradient(180deg, #010a0b 0%, #0d1b2a 100%);
     color: #f2f2f2;
@@ -161,8 +170,64 @@ nav {
     outline: 1px solid var(--secondary-l);
 }
 
-.search-cnt input:focus{
+.search-cnt input:focus {
     outline: 1px solid var(--accent);
+}
+
+.menu-btn {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 32px;
+    height: 4px;
+    background: var(--accent);
+    background: linear-gradient(120deg, var(--primary), var(--accent));
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    transform: translate(0, 10px) rotate(-45deg);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: translate(0, -10px) rotate(45deg);
+}
+
+.menu-cnt {
+    position: fixed;
+    top: 81px;
+    right: 0;
+    height: 100%;
+    width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    padding: 3rem 0;
+    background: var(--bg);
+    border-left: 1px solid var(--grey);
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 9;
+}
+
+.menu-cnt span{
+    display: none;
+}
+
+.menu-cnt.show{
+    width: 200px;
+}
+
+.menu-cnt.show span{
+    display: block;
 }
 
 header {
@@ -175,14 +240,17 @@ header {
 
 aside {
     position: fixed;
-    top: 66px;
+    top: 80px;
+    left: 0;
     height: 100%;
+    background: var(--bg);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 1rem;
     padding: 1rem 0.5rem;
     border-right: 1px solid var(--grey);
+    z-index: 9;
 }
 
 .tag {
@@ -203,6 +271,7 @@ aside {
 .container {
     display: flex;
     width: auto;
+    min-height: 100vh;
     margin: var(--margin-md);
     background: var(--secondary);
     padding: 2rem 1.2rem;
@@ -212,6 +281,9 @@ aside {
 }
 
 .color-effect {
+    font-size: 37px;
+    font-weight: bolder;
+    letter-spacing: -2.2px;
     background: linear-gradient(120deg, var(--primary), var(--accent));
     background-clip: text;
     -webkit-background-clip: text;
@@ -221,17 +293,17 @@ aside {
 .card-cnt {
     width: 100%;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     gap: 1em;
     grid-template-rows: repeat(auto-fill, 200px);
     justify-content: center
 }
 
 .card {
-    display: inline-flex;
-    max-width: 700px;
-    background: rgb(21,21,19);
-    background: radial-gradient(circle, rgba(21,21,19,0.8295693277310925) 0%, rgba(10,9,8,1) 100%);
+    position: relative;
+    height: 200px;
+    background: rgb(21, 21, 19);
+    background: radial-gradient(circle, rgba(21, 21, 19, 0.8295693277310925) 0%, rgba(10, 9, 8, 1) 100%);
     border-radius: 16px;
     border: 1px solid var(--grey);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -265,16 +337,27 @@ aside {
 }
 
 .game-desc {
-    display: inline-grid;
+    position: absolute;
+    display: grid;
     align-content: space-between;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
     padding: 10px;
     color: #f2f2f2;
     background: var(--dark);
     background: linear-gradient(180deg, var(--dark) 0%, var(--bg) 33%);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    z-index: 2;
+    z-index: 1;
+}
+
+.game-desc p {
+    display: inline-block;
+    max-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .button {
@@ -292,4 +375,8 @@ footer {
     color: #f2f2f2;
     background-color: #151513;
     border-top: 1px solid #2e2e2e;
+}
+
+.hidden {
+    display: none;
 }

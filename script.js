@@ -99,6 +99,10 @@ function App() {
             desc.innerHTML = card.game_desc.desc;
             release.innerHTML = card.game_desc.release;
 
+            // Card eventListener toggle class .hidden
+            card_cnt.addEventListener("click", () =>{
+                game_desc.classList.toggle("hidden");
+            });
             // Button customize
             cta.innerText = "Go to website";
             cta.type = "button";
@@ -111,6 +115,7 @@ function App() {
             card_cnt.setAttribute("class","card");
             image.setAttribute("class","image");
             game_desc.setAttribute("class","game-desc");
+            game_desc.classList.add("hidden");
 
             let cardCreated = {
                 card_cnt: card_cnt,
@@ -225,6 +230,16 @@ function App() {
         event_search: btn.addEventListener("click", (e) => {
             console.log(e.target);
         }),
+
+        event_toggleMenu: menu.addEventListener("click", (e) => {
+            if(e.target.parentElement.classList.contains("menu-btn")){
+                e.target.parentElement.classList.toggle("change");
+            } else {
+                e.target.classList.toggle("change");
+            }
+            console.log(e.target);
+            menuCnt.classList.toggle("show");
+        })
     };
 
     return {
@@ -244,6 +259,8 @@ const options = {
 };
 
 const btn = document.getElementById("btn");
+const menu = document.getElementById("menu");
+const menuCnt = document.getElementById("menuCnt");
 const cnt = document.getElementById("cnt");
 const aside_cnt = document.getElementById("aside-cnt");
 
