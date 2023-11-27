@@ -107,9 +107,6 @@ function App() {
             cta.innerText = "Go to website";
             cta.type = "button";
             cta.classList.add("button");
-            cta.addEventListener("click", () => {
-                window.location.href=card.game_desc.url
-            });
 
             // Set CSS class
             card_cnt.setAttribute("class","card");
@@ -117,6 +114,10 @@ function App() {
             game_desc.setAttribute("class","game-desc");
             game_desc.classList.add("hidden");
 
+            card_cnt.addEventListener("click", () => {
+                game_desc.classList.toggle("show");
+            });
+            
             let cardCreated = {
                 card_cnt: card_cnt,
                 game_desc: game_desc,

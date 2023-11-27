@@ -268,6 +268,13 @@ aside {
     background: var(--secondary);
 }
 
+.color-effect {
+    background: linear-gradient(120deg, var(--primary), var(--accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .container {
     display: flex;
     width: auto;
@@ -281,9 +288,6 @@ aside {
 }
 
 .color-effect {
-    font-size: 37px;
-    font-weight: bolder;
-    letter-spacing: -2.2px;
     background: linear-gradient(120deg, var(--primary), var(--accent));
     background-clip: text;
     -webkit-background-clip: text;
@@ -293,17 +297,17 @@ aside {
 .card-cnt {
     width: 100%;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     gap: 1em;
     grid-template-rows: repeat(auto-fill, 200px);
     justify-content: center
 }
 
 .card {
-    position: relative;
-    height: 200px;
-    background: rgb(21, 21, 19);
-    background: radial-gradient(circle, rgba(21, 21, 19, 0.8295693277310925) 0%, rgba(10, 9, 8, 1) 100%);
+    display: inline-flex;
+    max-width: 700px;
+    background: rgb(21,21,19);
+    background: radial-gradient(circle, rgba(21,21,19,0.8295693277310925) 0%, rgba(10,9,8,1) 100%);
     border-radius: 16px;
     border: 1px solid var(--grey);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -337,11 +341,8 @@ aside {
 }
 
 .game-desc {
-    position: absolute;
-    display: grid;
+    display: inline-grid;
     align-content: space-between;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     padding: 10px;
@@ -358,6 +359,10 @@ aside {
     max-height: 50px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.game-desc.show {
+    display: block;
 }
 
 .button {
