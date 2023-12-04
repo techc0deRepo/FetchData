@@ -1,6 +1,6 @@
 function App() {
 
-    var app = {
+    let app = {
         obj: {},
         sets: 
             {
@@ -103,6 +103,7 @@ function App() {
             card_cnt.addEventListener("click", () =>{
                 game_desc.classList.toggle("hidden");
             });
+
             // Button customize
             cta.innerText = "Go to website";
             cta.type = "button";
@@ -113,10 +114,6 @@ function App() {
             image.setAttribute("class","image");
             game_desc.setAttribute("class","game-desc");
             game_desc.classList.add("hidden");
-
-            card_cnt.addEventListener("click", () => {
-                game_desc.classList.toggle("show");
-            });
             
             let cardCreated = {
                 card_cnt: card_cnt,
@@ -162,17 +159,16 @@ function App() {
         sortObject: function(obj, filters) {
 
             app.resetCardContainer();
-            let sortedObj;
-
+            let sortedObj = obj;
+            
+            if (app.filters.name.length !== 0){
+                sortedObj = app.sortByText(obj);
+            }
             if (filters.tags.size !== 0){
-                sortedObj = app.sortByTagName(obj);
-            } else {
-                sortedObj = obj;
+                sortedObj = app.sortByTagName(sortedObj);
             }
             
             /*
-            sortedObj = app.sortByName(sortedObj);
-
             switch (filters.order) {
             case "price-asc":
                 oggettone.sort((a, b) => {
@@ -204,7 +200,7 @@ function App() {
 
         sortByTagName: (obj) => {
         
-            var array = [];
+            let array = [];
             
             obj.forEach(item => {
                 if (app.filters.tags.has(item.genre)){
@@ -215,21 +211,17 @@ function App() {
             return array;
         },
 
-        sortByName: (obj) => {
-        
-            var array = [];
-            
-            obj.forEach(item => {
-                if (app.filters.name.has(item.genre)){
-                    array.push(item);
-                }
-            });
+        sortByText: (obj) => {
+            let array = [];
+            let name = app.filters.name.toLowerCase();
+            array = obj.filter(item => item.title.toLowerCase().includes(name));
 
             return array;
         },
 
-        event_search: btn.addEventListener("click", (e) => {
-            console.log(e.target);
+        event_search: input.addEventListener("input", () => {
+            app.filters.name = document.getElementById("search-name").value;
+            app.sortObject(app.obj, app.filters);
         }),
 
         event_toggleMenu: menu.addEventListener("click", (e) => {
@@ -259,6 +251,7 @@ const options = {
 	}
 };
 
+const input = document.getElementById("search-name");
 const btn = document.getElementById("btn");
 const menu = document.getElementById("menu");
 const menuCnt = document.getElementById("menuCnt");

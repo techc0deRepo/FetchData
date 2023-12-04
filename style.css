@@ -359,10 +359,6 @@ aside {
     text-overflow: ellipsis;
 }
 
-.game-desc.show {
-    display: block;
-}
-
 .button {
     height: 42px;
     border-radius: 8px;
