@@ -99,11 +99,6 @@ function App() {
             desc.innerHTML = card.game_desc.desc;
             release.innerHTML = card.game_desc.release;
 
-            // Card eventListener toggle class .hidden
-            card_cnt.addEventListener("click", () =>{
-                game_desc.classList.toggle("hidden");
-            });
-
             // Button customize
             cta.innerText = "Go to website";
             cta.type = "button";
@@ -115,6 +110,11 @@ function App() {
             game_desc.setAttribute("class","game-desc");
             game_desc.classList.add("hidden");
             
+            // Card eventListener toggle class .hidden
+            card_cnt.addEventListener("click", () =>{
+                game_desc.classList.toggle("hidden");
+            });
+
             let cardCreated = {
                 card_cnt: card_cnt,
                 game_desc: game_desc,
