@@ -232,6 +232,7 @@ function App() {
             }
             console.log(e.target);
             menuCnt.classList.toggle("show");
+            menuList.classList.toggle("show");
         })
     };
 
@@ -255,6 +256,7 @@ const input = document.getElementById("search-name");
 const btn = document.getElementById("btn");
 const menu = document.getElementById("menu");
 const menuCnt = document.getElementById("menuCnt");
+const menuList = document.getElementById("menuList");
 const cnt = document.getElementById("cnt");
 const aside_cnt = document.getElementById("aside-cnt");
 
